@@ -14,7 +14,6 @@
       --text:#f6f3ea;
       --muted:#c7bfad;
       --stroke:rgba(202,162,74,.35);
-      --stroke2:rgba(241,213,138,.40);
       --shadow:0 22px 70px rgba(0,0,0,.62);
     }
     *{box-sizing:border-box}
@@ -66,7 +65,13 @@
     h1{margin:14px 0 0;font-size:22px;letter-spacing:.2px;line-height:1.05}
     .sub{margin:6px 0 0;color:var(--muted);font-size:13.5px;line-height:1.35}
     .content{padding:14px 16px 18px;}
-    .sec{margin:12px 0 8px;font-size:12px;color:rgba(241,213,138,.88);letter-spacing:.18em;text-transform:uppercase}
+    .sec{
+      margin:12px 0 8px;
+      font-size:12px;
+      color:rgba(241,213,138,.88);
+      letter-spacing:.18em;
+      text-transform:uppercase
+    }
     .btn{
       width:100%;
       display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -99,65 +104,16 @@
     .label small{margin-top:4px;font-size:12.5px;color:var(--muted);font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .right{color:rgba(241,213,138,.95);font-weight:900}
 
-    .box{
-      border:1px dashed rgba(241,213,138,.55);
-      background: rgba(0,0,0,.20);
-      border-radius:18px;
-      padding:12px;
-      margin-top:10px;
+    .spaceBelow{height:18px;} /* espaço em branco embaixo */
+    .centerNotice{
+      text-align:center;
+      font-weight:800;
+      line-height:1.35;
+      color:rgba(246,243,234,.92);
+      margin:8px 0 10px;
     }
-    .row{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-    .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.4px;line-height:1.35;color:rgba(246,243,234,.95);word-break:break-all}
-    .copy{
-      padding:10px 12px;border-radius:14px;
-      border:1px solid rgba(241,213,138,.28);
-      background: rgba(202,162,74,.12);
-      color:var(--text);font-weight:800;cursor:pointer;
-      white-space:nowrap;
-    }
-    .copy:hover{border-color:rgba(241,213,138,.60);background: rgba(202,162,74,.18)}
 
-    /* QR responsive premium */
-    .qr{
-      display:grid;
-      grid-template-columns: 190px 1fr;
-      gap:14px;
-      align-items:center;
-      margin-top:12px;
-    }
-    .qrCard{
-      width: 100%;
-  max-width: 320px;
-  margin: 10px auto 0 auto;
-    }
-    .qrCard img{
-      width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  border: 1px solid rgba(241,213,138,.35);
-  box-shadow: 0 12px 36px rgba(0,0,0,.45);
-    }
-    .hint{margin:0;color:var(--muted);font-size:12.8px;line-height:1.4}
     .foot{padding:14px 16px 18px;color:rgba(199,191,173,.92);font-size:12px;text-align:center}
-
-    @media (max-width: 520px){
-      body{padding:16px 10px;}
-      .banner{max-height: 260px;}
-      .qr{grid-template-columns: 1fr;}
-      .qrCard{width: 100%; height:auto; aspect-ratio: 1 / 1;}
-    }
-
-    .toast{
-      position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
-      background: rgba(0,0,0,.78);
-      border: 1px solid rgba(241,213,138,.35);
-      color: var(--text);
-      padding: 10px 14px;border-radius:999px;
-      box-shadow: 0 14px 46px rgba(0,0,0,.65);
-      opacity:0;pointer-events:none;transition: opacity .18s ease, transform .18s ease;
-    }
-    .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
   </style>
 </head>
 <body>
@@ -167,30 +123,15 @@
         <div class="bannerWrap">
           <img class="banner" src="img/alinhadas.jpg" alt="Alinhadas • Especial Mês das Mulheres" />
         </div>
-
         <h1>ALINHADAS</h1>
         <p class="sub">Especial Mês das Mulheres • Envie o comprovante após o pagamento</p>
       </div>
 
       <div class="content">
-        <div class="sec">COMPROVANTE</div>
-
-        <a class="btn" id="btnWhats" href="#" target="_blank" rel="noopener">
-          <div class="left">
-            <div class="icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M19.11 17.17c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.56-1.47-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.28 0 1.35.98 2.65 1.12 2.83.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32zM16 3C8.83 3 3 8.62 3 15.53c0 2.22.62 4.38 1.8 6.27L3 29l7.42-1.94a13.5 13.5 0 0 0 5.58 1.2c7.17 0 13-5.62 13-12.53C29 8.62 23.17 3 16 3zm0 22.7c-1.86 0-3.69-.48-5.32-1.39l-.38-.21-4.4 1.15 1.18-4.2-.25-.4a10.8 10.8 0 0 1-1.67-5.73C5.16 9.9 10.06 5.3 16 5.3s10.84 4.6 10.84 10.23S21.94 25.7 16 25.7z"/></svg>
-            </div>
-            <div class="label">
-              <strong>WhatsApp</strong>
-              <small>Enviar comprovante</small>
-            </div>
-          </div>
-          <div class="right">→</div>
-        </a>
-
         <div class="sec">PAGAMENTO</div>
 
-       <a class="btn" href="https://mpago.la/1ezqQxj" target="_blank" rel="noopener">
+        <!-- CRÉDITO -->
+        <a class="btn" href="https://mpago.la/1ezqQxj" target="_blank" rel="noopener">
           <div class="left">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M3 5h18a2 2 0 0 1 2 2v2H1V7a2 2 0 0 1 2-2zm-2 6h22v6a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-6zm4 2v2h6v-2H5z"/></svg>
@@ -203,75 +144,61 @@
           <div class="right">→</div>
         </a>
 
-    
-
-        <div class="box">
-          <div class="row">
-            <div style="flex:1; min-width:240px">
-              <div class="sec" style="margin:0 0 8px; letter-spacing:.14em;">PIX COPIA E COLA</div>
-              <div class="mono" id="pixCode">00020101021226940014BR.GOV.BCB.PIX2572pix-qr.mercadopago.com/instore/o/v2/22963198-2f5c-4457-93ec-37be57b9a12f5204000053039865802BR5905Jason6009SAO PAULO62070503***63047B15</div>
+        <!-- PIX (apenas botão, igual ao crédito) -->
+        <a class="btn" href="https://mpago.la/1ezqQxj" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h6v2H6v4H4V4zm14 0h2v6h-2V6h-4V4h4zM4 14h2v4h4v2H4v-6zm14 0h2v6h-6v-2h4v-4zM7 11h10v2H7v-2z"/>
+              </svg>
             </div>
-            <button class="copy" id="btnCopyPix" type="button">Copiar</button>
-          </div>
-
-          <div class="qr">
-            <div class="qrCard">
-              <img src="img/QRCODE2.jpg" alt="QR Code Pix" />
-            </div>
-            <div>
-              <div class="sec" style="margin:0 0 6px;">QR CODE PIX</div>
-              <p class="hint">Escaneie o QR Code para pagar via Pix. Depois, envie o comprovante no WhatsApp.</p>
+            <div class="label">
+              <strong>Pagamento no Pix</strong>
+              <small>Mercado Pago</small>
             </div>
           </div>
-        </div>
+          <div class="right">→</div>
+        </a>
+
+        <!-- espaço em branco embaixo -->
+        <div class="spaceBelow"></div>
+
+        <!-- texto centralizado -->
+        
+
+        <!-- WhatsApp embaixo -->
+        <a class="btn" id="btnWhats" href="#" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M19.11 17.17c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.56-1.47-1.83-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.28 0 1.35.98 2.65 1.12 2.83.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.55.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32zM16 3C8.83 3 3 8.62 3 15.53c0 2.22.62 4.38 1.8 6.27L3 29l7.42-1.94a13.5 13.5 0 0 0 5.58 1.2c7.17 0 13-5.62 13-12.53C29 8.62 23.17 3 16 3zm0 22.7c-1.86 0-3.69-.48-5.32-1.39l-.38-.21-4.4 1.15 1.18-4.2-.25-.4a10.8 10.8 0 0 1-1.67-5.73C5.16 9.9 10.06 5.3 16 5.3s10.84 4.6 10.84 10.23S21.94 25.7 16 25.7z"/></svg>
+            </div>
+            <div class="label">
+              <strong>WhatsApp</strong>
+              <small>Enviar comprovante</small>
+            </div>
+          </div>
+          <div class="right">→</div>
+        </a>
       </div>
-
+<div class="centerNotice">
+          Envie o comprovante no WhatsApp junto com seu nome completo para confirmar sua presença
+        </div>
       <div class="foot">© <span id="year"></span> • Alinhadas</div>
     </div>
   </div>
 
-  <div class="toast" id="toast">Copiado ✅</div>
-
   <script>
     const DATA = {
       whatsappNumero: "5519992969185",
-      whatsappMensagem: "Olá! Estou enviando o comprovante do pagamento do Alinhadas."
+      whatsappMensagem: "Olá! Estou enviando o comprovante do pagamento do Alinhadas junto com meu nome completo para confirmar minha presença."
     };
-
-    const $ = (id) => document.getElementById(id);
-
-    function toast(msg="Copiado ✅"){
-      const t = $("toast");
-      t.textContent = msg;
-      t.classList.add("show");
-      setTimeout(()=>t.classList.remove("show"), 1400);
-    }
-
-    async function copyText(text){
-      try {
-        await navigator.clipboard.writeText(text);
-        toast("Copiado ✅");
-      } catch(e) {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        toast("Copiado ✅");
-      }
-    }
 
     const waLink =
       "https://wa.me/" + encodeURIComponent(DATA.whatsappNumero) +
       "?text=" + encodeURIComponent(DATA.whatsappMensagem);
 
-    $("btnWhats").href = waLink;
-
-   
-    $("btnCopyPix").addEventListener("click", () => copyText($("pixCode").textContent));
-
-    $("year").textContent = new Date().getFullYear();
+    document.getElementById("btnWhats").href = waLink;
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
